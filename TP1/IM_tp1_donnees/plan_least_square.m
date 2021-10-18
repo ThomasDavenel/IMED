@@ -13,7 +13,7 @@ L=plot3(x,y,z,'ro'); % affiche les points (x,y,z) (données)
 set(L,'Markersize',2*get(L,'Markersize')) % augmente la taille des cercles
 set(L,'Markerfacecolor','r') % remplit les cercles
 
-pause %appuyez sur une touche pour continuer
+%pause %appuyez sur une touche pour continuer
 
 Xcolv = x(:); % on transforme en vecteur colonne
 Ycolv = y(:); 
