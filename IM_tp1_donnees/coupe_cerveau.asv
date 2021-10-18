@@ -1,6 +1,7 @@
 function [  ] = coupe_cerveau( irm, coupe )
 figure(1)
-irm(isnan(irm))=0;
+IsNan_irm = isnan(irm);
+
 if coupe==1
     disp('coronale')
     for y=1:size(irm,2)
