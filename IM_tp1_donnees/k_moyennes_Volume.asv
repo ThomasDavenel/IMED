@@ -1,0 +1,24 @@
+function [ irmSeg ] = coupe_cerveau( irm, coupe )
+if coupe==1
+    disp('coronale')
+    for y=1:size(irm,2)
+        [irmSeg, seuil] = k_moyennes(squeeze(irm(:,y,:)));
+    end
+end
+
+if coupe==2
+    disp('sagittale')
+    for x=1:size(irm,1)
+        [irmSeg, seuil] = k_moyennes(squeeze(irm(x,:,:)));
+    end
+end
+
+if coupe==3
+    disp('axiale')
+    for z=1:size(irm,3)
+        [irmSeg, seuil] = k_moyennes(squeeze(irm(:,:,z)));
+    end
+end
+
+
+end
