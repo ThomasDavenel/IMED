@@ -6,13 +6,13 @@ for k=1:4
     
     H=hist2(I,J);
     
-    SSD = ssd(I,J);
-    CORR = correlation(I,J);
-    IM = mutual_information(H);
+    %SSD = ssd(I,J);
+    %CORR = correlation(I,J);
+    %IM = mutual_information(H);
     
-    disp(['SSD=' num2str(SSD)]);
-    disp(['correlation=' num2str(CORR)]);
-    disp(['info mutuelle=' num2str(IM)]);
+    %disp(['SSD=' num2str(SSD)]);
+    %disp(['correlation=' num2str(CORR)]);
+    %disp(['info mutuelle=' num2str(IM)]);
     disp('-----------------');
     subplot(1,3,1)
     imagesc(I);axis equal;axis off;colormap gray;freezeColors;
