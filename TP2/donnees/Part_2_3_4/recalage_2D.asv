@@ -12,7 +12,7 @@ maxi = max(I(:));
     
 while norm(T-T_curr)>0.028
     J_t = translation(J,-p,-q);
-    [R, C] = size(tab_ssd);
+    [R, C
     
     [fx,fy] = grad_centre(J_t);
     dp = 2*sum((J_t(:)-I(:)).*fx(:));
@@ -28,6 +28,8 @@ while norm(T-T_curr)>0.028
     imshow(J_t, [mini, maxi]);
     subplot(1,4,3);
     imshow(abs(J_t-I), [mini, maxi]);
+    subplot(1,4,4);
+    plot(0:1:size(tab_ssd),cur_ssd);
     drawnow;
     
     cur_ssd = ssd(I,J_t)
@@ -35,10 +37,6 @@ while norm(T-T_curr)>0.028
 end
 disp(p);
 disp(q);
-
-subplot(1,4,4);
-plot(0:1:C,tab_ssd);
-
 out = J_t;
 
 end
