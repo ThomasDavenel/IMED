@@ -1,0 +1,14 @@
+function [  ] = Untitled( Seg, MRI )
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+segColor;
+[l,w] = size(MRI);
+for i = 1:l
+    for j = 1:w
+        if(Seg(i,j) == 1
+        segColor()
+    end
+end
+
+end
+
