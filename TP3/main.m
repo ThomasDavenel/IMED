@@ -32,4 +32,3 @@ subplot(1,2,2);
 imshow(Union,[]);
 
 %%Question3
-mode(seg)
