@@ -1,6 +1,8 @@
 close all;
 clear all;
-%% Question1
+%% PARTIE 1
+
+%%Question1
 load('TP3_donnees.mat');
 k = 1;
 seg = Segm_binaire(:,:,k);
@@ -30,3 +32,4 @@ subplot(1,2,2);
 imshow(Union,[]);
 
 %%Question3
+mode(seg)
