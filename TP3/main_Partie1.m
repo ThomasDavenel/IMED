@@ -1,6 +1,8 @@
 close all;
 clear all;
-%% Question1
+%% PARTIE 1
+
+%%Question1
 load('TP3_donnees.mat');
 k = 1; %l'indice de l'image selectionnée (entre 1 et 15)
 seg = Segm_binaire(:,:,k);

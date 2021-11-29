@@ -5,6 +5,8 @@ for k=1:4
     J =double(imread(['J' num2str(k) '.jpg']));
     
     H=hist2(I,J);
+    figure();
+    imagesc(log(H));axis equal;axis off;axis xy;colormap jet;
     
     SSD = ssd(I,J);
     CORR = correlation(I,J);
