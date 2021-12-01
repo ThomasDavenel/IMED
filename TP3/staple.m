@@ -25,10 +25,8 @@ while(~arret)
     %   E-Step (on connait p et q, on met a jour W)  %
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-        %A COMPLETER   for j=1:n genereusement autorise (possible de faire sans !)
-    
-    A = P1 * %%%;
-    B = P0 * %%%;
+    A = P1 * prod(p*prod(1-p));
+    B = P0 * prod(q*prod(1-q));
     
     W = A./(A+B);
     
@@ -41,6 +39,9 @@ while(~arret)
     q_old=q;
     
         %A COMPLETER
+        
+    p=sum(W(:)==1)/numel(W);
+    q=sum(W(:)==0)/numel(W);
     
     % test d'arret sur la variation de p et q
     dpq = max(norm(p_old-p),norm(q_old-q));
