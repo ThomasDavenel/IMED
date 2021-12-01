@@ -20,4 +20,4 @@ imshow(J,[])
 %% Partie 4
 
 J = rigid_transformation(I,pi/10,1,1);
-[Jdecal, tab_ssd] = recalage_2D(I,J);
+[Jdecal, tab_ssd] = recalage_rigid_transform(I,J);

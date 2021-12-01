@@ -6,7 +6,7 @@ epsilon_pq = 0.01;
 
 theta = 0;
 theta_old = theta+1;
-epsilon_theta = 1e-7;
+epsilon_theta = 1e-6;
 
 tab_ssd = [];
 cur_ssd = ssd(I,J);
@@ -17,9 +17,12 @@ cur_ssd = ssd(I,J);
 mini = min(I(:));
 maxi = max(I(:));
 
-while norm(T-T_curr)>0.028 && abs(theta-theta_old)>1e-7
+cpt = 0;
+while norm(T-T_curr)>0.02 && abs(theta-theta_old)>1e-7
     [R, C] = size(tab_ssd);
-    
+    if mod(cpt,25) == 0 && cpt~=0
+        epsilon_theta = epsilon_theta/2;
+    end
     J_rt = rigid_transformation(J,-theta,-p,-q);
     J_rtx = rigid_transformation(J_x,-theta,-p,-q);
     J_rty = rigid_transformation(J_y,-theta,-p,-q);
@@ -48,7 +51,13 @@ while norm(T-T_curr)>0.028 && abs(theta-theta_old)>1e-7
     
     cur_ssd = ssd(I,J_rt)
     tab_ssd = [tab_ssd, cur_ssd];
+    
+    cpt = cpt+1;
 end
+disp(theta);
+disp(p);
+disp(q);
+
 subplot(1,4,4);
 plot(0:1:C,tab_ssd);
 out=J_rt;
