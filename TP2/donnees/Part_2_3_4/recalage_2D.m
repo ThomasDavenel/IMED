@@ -2,21 +2,17 @@ function [ out, tab_ssd ] = recalage_2D( I,J )
 %J bouge
 p=0;
 q=0;
-epsilon = 0.01;
+epsilon = 0.005;
 tab_ssd = [];
 cur_ssd = ssd(I,J);
 T=[p q]; T_curr=T+1;
 
 mini = min(I(:));
 maxi = max(I(:));
-<<<<<<< HEAD
-[Jx,Jy] = grad_centre(J);
-    
-=======
-figure()
 
->>>>>>> origin/main
-while norm(T-T_curr)>0.028
+[Jx,Jy] = grad_centre(J);
+figure()
+while norm(T-T_curr)>0.03
     J_t = translation(J,-p,-q);
     [R, C] = size(tab_ssd);
     

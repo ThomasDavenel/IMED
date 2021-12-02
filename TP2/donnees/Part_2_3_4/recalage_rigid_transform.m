@@ -2,7 +2,7 @@ function [ out,tab_ssd ] = recalage_rigid_transform( I,J )
 p=0;
 q=0;
 T=[p q]; T_curr=T+1;
-epsilon_pq = 0.01;
+epsilon_pq = 0.005;
 
 theta = 0;
 theta_old = theta+1;
@@ -18,10 +18,10 @@ mini = min(I(:));
 maxi = max(I(:));
 figure()
 cpt = 0;
-while norm(T-T_curr)>0.02 && abs(theta-theta_old)>1e-8
+while (norm(T-T_curr)>0.03 || abs(theta-theta_old)>5*1e-5)
     [R, C] = size(tab_ssd);
-    if mod(cpt,50) == 0 && cpt~=0
-        epsilon_theta = (epsilon_theta)/10;
+    if mod(cpt,8) == 0 && cpt~=0 && cpt<17
+        epsilon_theta = (epsilon_theta)/20;
     end
     
     J_rt = rigid_transformation(J,-theta,-p,-q);
@@ -54,6 +54,9 @@ while norm(T-T_curr)>0.02 && abs(theta-theta_old)>1e-8
     tab_ssd = [tab_ssd, cur_ssd];
     
     cpt = cpt+1;
+    
+    norm(T-T_curr)
+    abs(theta-theta_old)
 end
 disp(theta);
 disp(p);
