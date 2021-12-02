@@ -9,8 +9,13 @@ T=[p q]; T_curr=T+1;
 
 mini = min(I(:));
 maxi = max(I(:));
+<<<<<<< HEAD
 [Jx,Jy] = grad_centre(J);
     
+=======
+figure()
+
+>>>>>>> origin/main
 while norm(T-T_curr)>0.028
     J_t = translation(J,-p,-q);
     [R, C] = size(tab_ssd);
