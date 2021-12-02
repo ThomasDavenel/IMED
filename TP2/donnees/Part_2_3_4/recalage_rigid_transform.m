@@ -6,7 +6,7 @@ epsilon_pq = 0.01;
 
 theta = 0;
 theta_old = theta+1;
-epsilon_theta = 1e-6;
+epsilon_theta =5* 1e-6;
 
 tab_ssd = [];
 cur_ssd = ssd(I,J);
@@ -18,11 +18,12 @@ mini = min(I(:));
 maxi = max(I(:));
 
 cpt = 0;
-while norm(T-T_curr)>0.02 && abs(theta-theta_old)>1e-7
+while norm(T-T_curr)>0.02 && abs(theta-theta_old)>1e-8
     [R, C] = size(tab_ssd);
-    if mod(cpt,25) == 0 && cpt~=0
-        epsilon_theta = epsilon_theta/2;
+    if mod(cpt,50) == 0 && cpt~=0
+        epsilon_theta = (epsilon_theta)/10;
     end
+    
     J_rt = rigid_transformation(J,-theta,-p,-q);
     J_rtx = rigid_transformation(J_x,-theta,-p,-q);
     J_rty = rigid_transformation(J_y,-theta,-p,-q);
@@ -30,8 +31,8 @@ while norm(T-T_curr)>0.02 && abs(theta-theta_old)>1e-7
     A = -X*sin(theta)-Y*cos(theta);
     B = X*cos(theta)-Y*sin(theta);
     d_theta = 2*sum((J_rt(:)-I(:)).*(J_rtx(:).*A(:)+J_rty(:).*B(:)));
-    dp = 2*sum((J_rt(:)-I(:)).*J_x(:));
-    dq = 2*sum((J_rt(:)-I(:)).*J_y(:));
+    dp = 2*sum((J_rt(:)-I(:)).*J_rtx(:));
+    dq = 2*sum((J_rt(:)-I(:)).*J_rty(:));
     
     theta_old = theta;
     theta = theta - epsilon_theta*d_theta;

@@ -9,12 +9,15 @@ T=[p q]; T_curr=T+1;
 
 mini = min(I(:));
 maxi = max(I(:));
+[Jx,Jy] = grad_centre(J);
     
 while norm(T-T_curr)>0.028
     J_t = translation(J,-p,-q);
     [R, C] = size(tab_ssd);
     
-    [fx,fy] = grad_centre(J_t);
+    fx = translation(Jx,-p,-q);
+    fy = translation(Jy,-p,-q);
+    
     dp = 2*sum((J_t(:)-I(:)).*fx(:));
     dq = 2*sum((J_t(:)-I(:)).*fy(:));
     T = [p q];

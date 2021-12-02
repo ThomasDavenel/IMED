@@ -1,0 +1,9 @@
+diff a/TP2/donnees/Part_2_3_4/Main.m b/TP2/donnees/Part_2_3_4/Main.m	(rejected hunks)
+@@ -20,5 +20,4 @@
+ %% Partie 4
+ 
+ J = rigid_transformation(I,pi/10,1,1);
+-[Jdecal, tab_ssd] = recalage_rigid_transform(I,J);
+\ No newline at end of file
+ %[Jdecal, tab_ssd] = recalage_rigid_transform(I,J);
+\ No newline at end of file
