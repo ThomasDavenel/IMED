@@ -9,7 +9,8 @@ T=[p q]; T_curr=T+1;
 
 mini = min(I(:));
 maxi = max(I(:));
-    
+figure()
+
 while norm(T-T_curr)>0.028
     J_t = translation(J,-p,-q);
     [R, C] = size(tab_ssd);

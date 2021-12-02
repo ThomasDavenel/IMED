@@ -16,7 +16,7 @@ cur_ssd = ssd(I,J);
 
 mini = min(I(:));
 maxi = max(I(:));
-
+figure()
 cpt = 0;
 while norm(T-T_curr)>0.02 && abs(theta-theta_old)>1e-7
     [R, C] = size(tab_ssd);
