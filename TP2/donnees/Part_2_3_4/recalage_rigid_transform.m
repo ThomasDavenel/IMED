@@ -57,11 +57,11 @@ while (norm(T-T_curr)>0.03 || abs(theta-theta_old)>5*1e-5) %double cas d'arret q
     % Affichage de I et de l'évolution du recalage de J (J_t) ainsi que la
     % différence des 2
     subplot(1,4,1);
-    imshow(I, [mini, maxi]);
+    imshow(I, [mini, maxi]);title('Brain_MRI_1');
     subplot(1,4,2);
-    imshow(J_rt, [mini, maxi]);
+    imshow(J_rt, [mini, maxi]);title('J en recalage');
     subplot(1,4,3);
-    imshow(abs(J_rt-I), [mini, maxi]);
+    imshow(abs(J_rt-I), [mini, maxi]);title('abs(I-J_rt)');
     drawnow;
     
     %Calcul de la nouvelle SSD entre I et J et ajout au tableau
@@ -77,7 +77,7 @@ disp(q);
 
 %Affichage de la courbe de l'évolution de la SSD
 subplot(1,4,4);
-plot(0:1:C,tab_ssd);
+plot(0:1:C,tab_ssd);title('Évolution de la SSD');
 
 %On retourne l'image recaléée
 out=J_rt;

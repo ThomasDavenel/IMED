@@ -38,11 +38,11 @@ while(abs(theta-theta_old)>1e-7)
     % Affichage de I et de l'évolution du recalage de J (J_r) ainsi que la
     % différence des 2
     subplot(1,4,1);
-    imshow(I, [mini, maxi]);
+    imshow(I, [mini, maxi]);title('Brain_MRI_1');
     subplot(1,4,2);
-    imshow(J_r, [mini, maxi]);
+    imshow(J_r, [mini, maxi]);title('J en recalage');
     subplot(1,4,3);
-    imshow(abs(J_r-I), [mini, maxi]);
+    imshow(abs(J_r-I), [mini, maxi]);title('abs(I-J_r)');
     drawnow;
     
     %Calcul de la nouvelle SSD entre I et J et ajout au tableau
@@ -54,4 +54,4 @@ disp(theta);
 
 %Affichage de la courbe de l'évolution de la SSD
 subplot(1,4,4);
-plot(0:1:C,tab_ssd);
+plot(0:1:C,tab_ssd);title('Évolution de la SSD');
