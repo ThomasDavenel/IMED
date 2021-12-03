@@ -23,20 +23,18 @@ theta_old = theta+1; %Initialisation des valeurs theta et de theta_old (ancienne
 
 %Début du traitement avec la distance à minimiser entre theta et theta_old
 while(abs(theta-theta_old)>1e-7)
-    J_r = rotation(J,-theta); %Calcul de la nouvelle rotation de J
+    J_r = rotation(J,-theta);
     J_rx = rotation(J_x,-theta);
-    J_ry = rotation(J_y,-theta); %Calcul des gradients tournés
+    J_ry = rotation(J_y,-theta);
     [R, C] = size(tab_ssd);
         
     A = -X*sin(theta)-Y*cos(theta);
-    B = X*cos(theta)-Y*sin(theta); %Calcul des coefficients de la dérivée
-    d_theta = 2*sum((J_r(:)-I(:)).*(J_rx(:).*A(:)+J_ry(:).*B(:))); %Calcul de la dérivée de la SSD par rapport à theta
+    B = X*cos(theta)-Y*sin(theta);
+    d_theta = 2*sum((J_r(:)-I(:)).*(J_rx(:).*A(:)+J_ry(:).*B(:)));
     
-    theta_old = theta; %Attribution de l'ancienne valeur de theta
-    theta = theta - epsilon*d_theta; %Calcul du nouveau theta
+    theta_old = theta;
+    theta = theta - epsilon*d_theta;
     
-    % Affichage de I et de l'évolution du recalage de J (J_r) ainsi que la
-    % différence des 2
     subplot(1,4,1);
     imshow(I, [mini, maxi]);
     subplot(1,4,2);
@@ -45,13 +43,9 @@ while(abs(theta-theta_old)>1e-7)
     imshow(abs(J_r-I), [mini, maxi]);
     drawnow;
     
-    %Calcul de la nouvelle SSD entre I et J et ajout au tableau
     cur_ssd = ssd(I,J_r)
     tab_ssd = [tab_ssd, cur_ssd];
 end
-%Affichage de la valeur de theta retenue pour le recalage
-disp(theta);
 
-%Affichage de la courbe de l'évolution de la SSD
 subplot(1,4,4);
 plot(0:1:C,tab_ssd);

@@ -56,7 +56,7 @@ disp(q);
 subplot(1,4,4);
 plot(0:1:C,tab_ssd);
 
-%On retourne l'image recaléée
+%On retourne l'image recalée
 out = J_t;
 
 end
