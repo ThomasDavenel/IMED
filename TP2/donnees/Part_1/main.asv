@@ -39,5 +39,4 @@ corI1J1 = correlation(I1,J1)
 
 %% Information mutuelle
 
-%Calcul et affichage de l'information mutuelle entre I1 et J1
-IM = mutual_information(H)
+disp(
