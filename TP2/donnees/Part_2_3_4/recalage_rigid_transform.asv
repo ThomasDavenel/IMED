@@ -69,17 +69,16 @@ while (norm(T-T_curr)>0.03 || abs(theta-theta_old)>5*1e-5) %double cas d'arret q
     tab_ssd = [tab_ssd, cur_ssd];
     
     cpt = cpt+1;
+    
+    norm(T-T_curr)
+    abs(theta-theta_old)
 end
-%Affichage des valeurs de p, q et theta retenues pour le recalage
 disp(theta);
 disp(p);
 disp(q);
 
-%Affichage de la courbe de l'évolution de la SSD
 subplot(1,4,4);
 plot(0:1:C,tab_ssd);
-
-%On retourne l'image recaléée
 out=J_rt;
 
 end
