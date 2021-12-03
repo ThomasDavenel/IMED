@@ -34,8 +34,6 @@ while norm(T-T_curr)>0.03
     q = q - epsilon*dq;
     T_curr = [p q];    
     
-    % Affichage de I et de l'évolution du recalage de J (J_t) ainsi que la
-    % différence des 2
     subplot(1,4,1);
     imshow(I, [mini, maxi]);
     subplot(1,4,2);
@@ -44,19 +42,15 @@ while norm(T-T_curr)>0.03
     imshow(abs(J_t-I), [mini, maxi]);
     drawnow;
     
-    %Calcul de la nouvelle SSD entre I et J et ajout au tableau
     cur_ssd = ssd(I,J_t)
     tab_ssd = [tab_ssd, cur_ssd];
 end
-%Affichage des valeurs de p et q retenues pour le recalage
 disp(p);
 disp(q);
 
-%Affichage de la courbe de l'évolution de la SSD
 subplot(1,4,4);
 plot(0:1:C,tab_ssd);
 
-%On retourne l'image recaléée
 out = J_t;
 
 end

@@ -19,7 +19,7 @@ subplot(1,2,2)
 imshow(J,[])
 
 %Calcul du recalage par translation de l'image J vers l'image I
-[Jdecal, tab_ssd] = recalage_2D(I,J);
+%[Jdecal, tab_ssd] = recalage_2D(I,J);
 
 %% Partie 3
 %La partie 3 se déroule dans le script registration_rotation_2D.m
@@ -40,5 +40,4 @@ imshow(I,[])
 subplot(1,2,2)
 imshow(J,[])
 
-%Calcul du recalage par transformation rigide de l'image J vers l'image I
 [Jdecal, tab_ssd] = recalage_rigid_transform(I,J);
