@@ -17,7 +17,7 @@ disp(R*C)
 %On calcule l'histogramme joint entre I1 et J1
 H = hist2(I1,J1);
 figure()
-imagesc(log(H));title('Histogramme joint');axis equal;axis off;axis xy;colormap jet;
+imagesc(log(H));title('Histo joint');axis equal;axis off;axis xy;colormap jet;
 
 %On calcule le nombre de valeurs dans l'histogramme
 nbValH = 0;

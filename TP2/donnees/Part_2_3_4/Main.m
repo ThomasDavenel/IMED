@@ -8,7 +8,7 @@ load('TP2_donnees');
 %Attribution de l'image Brain_MRI_1 à I et affichage
 subplot(1,2,1)
 I = Brain_MRI_1;
-imshow(I,[])
+imshow(I,[]);title('Brain_MRI_1');
 
 %Calcul et affichage de l'image J, translatée du vecteur [p,q] par rapport
 %à I
@@ -16,7 +16,7 @@ p=50;
 q=50;
 J = translation(I,p,q);
 subplot(1,2,2)
-imshow(J,[])
+imshow(J,[]);title('J translatée');
 
 %Calcul du recalage par translation de l'image J vers l'image I
 [Jdecal, tab_ssd] = recalage_2D(I,J);
@@ -36,9 +36,9 @@ J = rigid_transformation(I,theta,p,q);
 %Affichage de I et J
 figure()
 subplot(1,2,1)
-imshow(I,[])
+imshow(I,[]);title('Brain_MRI_1');
 subplot(1,2,2)
-imshow(J,[])
+imshow(J,[]);title('J rigid transform');
 
 %Calcul du recalage par transformation rigide de l'image J vers l'image I
 [Jdecal, tab_ssd] = recalage_rigid_transform(I,J);
