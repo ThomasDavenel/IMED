@@ -25,8 +25,16 @@ while(~arret)
     %   E-Step (on connait p et q, on met a jour W)  %
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    A = P1 * prod(p*prod(1-p));
-    B = P0 * prod(q*prod(1-q));
+    A = P1 * ones(size(L,1),size(L,2));
+    B = P0 * ones(size(L,1),size(L,2));
+    
+    for j = 1:n
+            A(L(:,:,j)==1) = A(L(:,:,j)==1)*p(j);
+            A(L(:,:,j)==0) = A(L(:,:,j)==0)*(1-p(j));
+                        
+            B(L(:,:,j)==1) = B(L(:,:,j)==1)*(1-q(j));
+            B(L(:,:,j)==0) = B(L(:,:,j)==0)*q(j);
+    end
     
     W = A./(A+B);
     
@@ -38,10 +46,16 @@ while(~arret)
     p_old=p;
     q_old=q;
     
-        %A COMPLETER
-        
-    p=sum(W(:)==1)/numel(W);
-    q=sum(W(:)==0)/numel(W);
+    %A COMPLETER
+    sumPj =ones(1,n);
+    sumQj =ones(1,n);
+    for j = 1:n        
+        sumPj(j) = sum(W(L(:,:,j)==1));
+        sumQj(j) = sum(1-W(L(:,:,j)==0));
+    end
+    
+    p=sumPj/sum(W(:));
+    q=sumQj/sum(1-W(:));
     
     % test d'arret sur la variation de p et q
     dpq = max(norm(p_old-p),norm(q_old-q));
