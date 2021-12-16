@@ -29,6 +29,8 @@ while(~arret)
     B = P0 * ones(size(L,1),size(L,2));
     
     for j = 1:n
+        %Influence de chaque segmentation de chaque expert en fonction de
+        %son paramètre de performance
             A(L(:,:,j)==1) = A(L(:,:,j)==1)*p(j);
             A(L(:,:,j)==0) = A(L(:,:,j)==0)*(1-p(j));
                         
@@ -36,6 +38,7 @@ while(~arret)
             B(L(:,:,j)==0) = B(L(:,:,j)==0)*q(j);
     end
     
+    %Estimation de la segmentation de référence en fonction des paramètres de performance de chaque expert
     W = A./(A+B);
     
     
@@ -46,7 +49,9 @@ while(~arret)
     p_old=p;
     q_old=q;
     
-    %A COMPLETER
+    %Calcul de la sensibilité et la spécificité de chaque expert en
+    %fonction de l'estimation de la segmentation de référence calculé dans
+    %l'étape E.
     sumPj =ones(1,n);
     sumQj =ones(1,n);
     for j = 1:n        
