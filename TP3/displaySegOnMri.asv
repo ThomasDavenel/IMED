@@ -7,7 +7,7 @@ for i = 1:l
     for j = 1:w
         if(Seg(i,j) == 1) %Si la segmentation vaut 1 alors on identifie en rouge le pixel considéré dans l'image de sortie
             segColor(i,j,1)=255;
-        else              % Sinon on garde la valeur du pixel considéré sur l'IRM
+        else              % Sinon on garde la valeur du pixel considéré 
             val = MRI(i,j)/MAX;
             segColor(i,j,1)=val;
             segColor(i,j,2)=val;
@@ -15,7 +15,6 @@ for i = 1:l
         end
     end
 end
-%Affichage
 figure()
 imshow(segColor,[]);title(['IRM moyenne + Segm de la couche ',num2str(numSeg)]);
 end

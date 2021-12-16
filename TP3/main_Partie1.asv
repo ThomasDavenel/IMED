@@ -34,7 +34,6 @@ subplot(1,3,2);
 imshow(Union,[0,1]);title('Union');
 
 %% Question3
-%Affichage de la méthode majority voting
 subplot(1,3,3);
 maj = mode(Segm_binaire,3);
 imshow(maj,[0,1]);title('Majority voting');
@@ -45,13 +44,10 @@ maj = mode(Segm_4classes,3);
 imshow(maj,[]);title('Majority voting 4 classes');
 
 %% Question4
-%Calculs des trois méthodes d'estimation de la segmentation moyenne pour le
-%nouveau volume
 Inter =  prod(Segm_toy,3);
 Union =  sum(Segm_toy,3);
 maj = mode(Segm_toy,3);
 
-%Affichage
 figure()
 subplot(1,3,1);
 imshow(Inter,[0,1]);title('Intersection');
